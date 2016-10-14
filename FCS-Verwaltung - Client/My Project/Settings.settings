@@ -1,0 +1,36 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="Port" Type="System.String" Scope="User">
+      <Value Profile="(Default)">42647</Value>
+    </Setting>
+    <Setting Name="LastServerIP" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LastUsername" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="net_username" Type="System.String" Scope="User">
+      <Value Profile="(Default)">netzwerkzugriff</Value>
+    </Setting>
+    <Setting Name="net_password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">player1</Value>
+    </Setting>
+    <Setting Name="net_computer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">fcs-server</Value>
+    </Setting>
+    <Setting Name="static_ip_bo" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="staic_ip_st" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.178.72</Value>
+    </Setting>
+    <Setting Name="Premiere_Path" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Program Files\Adobe\Adobe Premiere Pro CS6\Adobe Premiere Pro.exe</Value>
+    </Setting>
+    <Setting Name="Auditions_Path" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Program Files (x86)\Adobe\Adobe Audition CS6\Adobe Audition CS6.exe</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
