@@ -202,7 +202,15 @@ Public Class Login
             .Arguments = " /c netsh advfirewall firewall show rule name=""FCS-Verwaltung Client"" || netsh advfirewall firewall add rule name=""FCS-Verwaltung Client"" dir=in action=allow localport=42647 protocol=tcp"
         End With
 
-        cmdpro = Process.Start(procStartInfo)
+        Try
+
+            cmdpro = Process.Start(procStartInfo)
+
+        Catch ex As Exception
+
+            Me.Close()
+
+        End Try
 
     End Sub
 

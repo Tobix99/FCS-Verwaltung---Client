@@ -46,6 +46,18 @@ Public Class Projectpage
 
         Next
 
+        For Each camera As database.cameraRow In Database1.camera.Rows
+
+            Dim gitem As New TreeNode
+
+            gitem.Name = camera.Name
+
+            gitem.Text = camera.Name
+
+            TVData.Nodes.Add(gitem)
+
+        Next
+
     End Sub
 
     Private Sub check_for_data_Tick(sender As Object, e As EventArgs) Handles check_for_data.Tick
@@ -53,18 +65,20 @@ Public Class Projectpage
 
         If ierror >= 10 Then
 
-            MessageBox.Show("Fehler beim Datenübertragen")
             check_for_data.Stop()
+            MessageBox.Show("Fehler beim Datenübertragen")
+
         End If
 
         If datafiles <> "" Then
 
             If datafiles = "empty" Then
 
-                Dim lvItem1 As ListViewItem
+                Dim tvItem1 As New TreeNode
 
-                Me.Invoke(Sub() lvItem1 = LVDatafiles.Items.Add("Keine Daten vorhanden"))
-                Me.Invoke(Sub() lvItem1.SubItems.AddRange(New String() {"Keine Daten vorhanden"}))
+                tvItem1.Text = "Keine Daten vorhanden"
+
+                TVData.Nodes.Add(tvItem1)
 
             Else
 
@@ -72,13 +86,36 @@ Public Class Projectpage
 
                 For Each item As String In tempsplit
 
-                    Dim lvItem As ListViewItem
+                    If item = "" Then
 
-                    Me.Invoke(Sub() lvItem = LVDatafiles.Items.Add(item))
+                        Exit For
 
-                    Dim tempsplit2 As String() = item.Split(CChar("."))
+                    End If
 
-                    Me.Invoke(Sub() lvItem.SubItems.AddRange(New String() {tempsplit2(1)}))
+                    Dim tempsplit2 As String() = item.Split(CChar("^"))
+
+                    Dim cameraname As String = ""
+                    Dim gitem As New ListViewGroup
+
+                    For Each camera As database.cameraRow In Database1.camera.Rows
+
+                        If camera.ID = Convert.ToInt32(tempsplit2(1)) Then
+
+                            cameraname = camera.Name
+                            Exit For
+
+                        Else
+
+                            cameraname = "Kamera nicht gefunden!"
+
+                        End If
+
+                    Next
+
+                    Dim tmpNode() As TreeNode = TVData.Nodes.Find(cameraname, False)
+                    'Assuming only one Match
+                    tmpNode(0).Nodes.Add(tempsplit2(0))
+
 
 
                 Next
@@ -99,8 +136,8 @@ Public Class Projectpage
 
         If ierrorother >= 10 Then
 
-            MessageBox.Show("Fehler beim Datenübertragen")
             check_for_dataother.Stop()
+            MessageBox.Show("Fehler beim Datenübertragen")
 
         End If
 
@@ -108,8 +145,6 @@ Public Class Projectpage
 
 
         If dataotherfiles <> "" Then
-
-            MessageBox.Show(dataotherfiles)
 
             If dataotherfiles = "empty" Then
 
@@ -124,6 +159,12 @@ Public Class Projectpage
                 Dim tempsplit As String() = dataotherfiles.Split(CChar("°"))
 
                 For Each item As String In tempsplit
+
+                    If item = "" Then
+
+                        Exit For
+
+                    End If
 
                     Dim lvItem As ListViewItem
 
@@ -145,6 +186,41 @@ Public Class Projectpage
 
 
         End If
+
+    End Sub
+
+    Private Sub TVData_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles TVData.AfterSelect
+
+        Dim partennodetest As Boolean = False
+
+        For Each rowitem As database.cameraRow In Database1.camera.Rows
+
+            If TVData.SelectedNode.Text = rowitem.Name Then
+
+                partennodetest = True
+
+            End If
+
+        Next
+
+        If partennodetest Then
+
+            Exit Sub
+
+        End If
+
+        For Each rowitem As database.cameraRow In Database1.camera.Rows
+
+            If TVData.SelectedNode.Text = rowitem.Name Then
+
+                partennodetest = True
+
+            End If
+
+        Next
+
+        Player.URL = Hauptscreen.project_driveletter & ":\" & musicrow.Interpret & "\" & musicrow.Album & "\" & musicrow.Name & "." & musicrow._Format_ext
+
 
     End Sub
 End Class

@@ -253,6 +253,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="database.xsc">
       <DependentUpon>database.xsd</DependentUpon>
     </None>

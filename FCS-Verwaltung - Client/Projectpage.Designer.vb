@@ -23,18 +23,19 @@ Partial Class Projectpage
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Projectpage))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.LProject = New System.Windows.Forms.Label()
         Me.Database1 = New FCS_Verwaltung___Client.database()
         Me.LVDataOther = New System.Windows.Forms.ListView()
         Me.Datei = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Typ = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.LVDatafiles = New System.Windows.Forms.ListView()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.check_for_data = New System.Windows.Forms.Timer(Me.components)
         Me.check_for_dataother = New System.Windows.Forms.Timer(Me.components)
+        Me.TVData = New System.Windows.Forms.TreeView()
+        Me.Player = New AxWMPLib.AxWindowsMediaPlayer()
         CType(Me.Database1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Player, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -81,27 +82,6 @@ Partial Class Projectpage
         '
         Me.Typ.Text = "Typ"
         '
-        'LVDatafiles
-        '
-        Me.LVDatafiles.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
-        Me.LVDatafiles.FullRowSelect = True
-        Me.LVDatafiles.Location = New System.Drawing.Point(12, 37)
-        Me.LVDatafiles.MultiSelect = False
-        Me.LVDatafiles.Name = "LVDatafiles"
-        Me.LVDatafiles.Size = New System.Drawing.Size(273, 147)
-        Me.LVDatafiles.TabIndex = 4
-        Me.LVDatafiles.UseCompatibleStateImageBehavior = False
-        Me.LVDatafiles.View = System.Windows.Forms.View.Details
-        '
-        'ColumnHeader1
-        '
-        Me.ColumnHeader1.Text = "Datei"
-        Me.ColumnHeader1.Width = 120
-        '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.Text = "Typ"
-        '
         'check_for_data
         '
         Me.check_for_data.Interval = 500
@@ -110,18 +90,37 @@ Partial Class Projectpage
         '
         Me.check_for_dataother.Interval = 500
         '
+        'TVData
+        '
+        Me.TVData.Location = New System.Drawing.Point(15, 37)
+        Me.TVData.Name = "TVData"
+        Me.TVData.Size = New System.Drawing.Size(270, 147)
+        Me.TVData.TabIndex = 5
+        '
+        'Player
+        '
+        Me.Player.Enabled = True
+        Me.Player.Location = New System.Drawing.Point(12, 190)
+        Me.Player.Name = "Player"
+        Me.Player.OcxState = CType(resources.GetObject("Player.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.Player.Size = New System.Drawing.Size(552, 92)
+        Me.Player.TabIndex = 10
+        Me.Player.UseWaitCursor = True
+        '
         'Projectpage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(594, 357)
-        Me.Controls.Add(Me.LVDatafiles)
+        Me.Controls.Add(Me.Player)
+        Me.Controls.Add(Me.TVData)
         Me.Controls.Add(Me.LVDataOther)
         Me.Controls.Add(Me.LProject)
         Me.Controls.Add(Me.Label1)
         Me.Name = "Projectpage"
         Me.Text = "Projectpage"
         CType(Me.Database1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Player, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -133,9 +132,8 @@ Partial Class Projectpage
     Friend WithEvents LVDataOther As ListView
     Friend WithEvents Datei As ColumnHeader
     Friend WithEvents Typ As ColumnHeader
-    Friend WithEvents LVDatafiles As ListView
-    Friend WithEvents ColumnHeader1 As ColumnHeader
-    Friend WithEvents ColumnHeader2 As ColumnHeader
     Friend WithEvents check_for_data As Timer
     Friend WithEvents check_for_dataother As Timer
+    Friend WithEvents TVData As TreeView
+    Friend WithEvents Player As AxWMPLib.AxWindowsMediaPlayer
 End Class
