@@ -33,9 +33,12 @@ Partial Class Projectpage
         Me.check_for_data = New System.Windows.Forms.Timer(Me.components)
         Me.check_for_dataother = New System.Windows.Forms.Timer(Me.components)
         Me.TVData = New System.Windows.Forms.TreeView()
-        Me.Player = New AxWMPLib.AxWindowsMediaPlayer()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.QTPlayer = New AxQTOControlLib.AxQTControl()
+        Me.TBOtherData = New System.Windows.Forms.TextBox()
+        Me.Size = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         CType(Me.Database1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Player, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.QTPlayer, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -63,9 +66,9 @@ Partial Class Projectpage
         '
         'LVDataOther
         '
-        Me.LVDataOther.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Datei, Me.Typ})
+        Me.LVDataOther.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.Datei, Me.Typ, Me.Size})
         Me.LVDataOther.FullRowSelect = True
-        Me.LVDataOther.Location = New System.Drawing.Point(291, 37)
+        Me.LVDataOther.Location = New System.Drawing.Point(328, 37)
         Me.LVDataOther.MultiSelect = False
         Me.LVDataOther.Name = "LVDataOther"
         Me.LVDataOther.Size = New System.Drawing.Size(273, 147)
@@ -94,25 +97,48 @@ Partial Class Projectpage
         '
         Me.TVData.Location = New System.Drawing.Point(15, 37)
         Me.TVData.Name = "TVData"
-        Me.TVData.Size = New System.Drawing.Size(270, 147)
+        Me.TVData.Size = New System.Drawing.Size(307, 147)
         Me.TVData.TabIndex = 5
         '
-        'Player
+        'Label2
         '
-        Me.Player.Enabled = True
-        Me.Player.Location = New System.Drawing.Point(12, 190)
-        Me.Player.Name = "Player"
-        Me.Player.OcxState = CType(resources.GetObject("Player.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.Player.Size = New System.Drawing.Size(552, 92)
-        Me.Player.TabIndex = 10
-        Me.Player.UseWaitCursor = True
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(325, 21)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(39, 13)
+        Me.Label2.TabIndex = 11
+        Me.Label2.Text = "Label2"
+        '
+        'QTPlayer
+        '
+        Me.QTPlayer.Enabled = True
+        Me.QTPlayer.Location = New System.Drawing.Point(12, 190)
+        Me.QTPlayer.Name = "QTPlayer"
+        Me.QTPlayer.OcxState = CType(resources.GetObject("QTPlayer.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.QTPlayer.Size = New System.Drawing.Size(310, 205)
+        Me.QTPlayer.TabIndex = 12
+        '
+        'TBOtherData
+        '
+        Me.TBOtherData.Location = New System.Drawing.Point(328, 190)
+        Me.TBOtherData.Multiline = True
+        Me.TBOtherData.Name = "TBOtherData"
+        Me.TBOtherData.ReadOnly = True
+        Me.TBOtherData.Size = New System.Drawing.Size(273, 205)
+        Me.TBOtherData.TabIndex = 13
+        '
+        'Size
+        '
+        Me.Size.Text = "Größe"
         '
         'Projectpage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(594, 357)
-        Me.Controls.Add(Me.Player)
+        Me.ClientSize = New System.Drawing.Size(685, 407)
+        Me.Controls.Add(Me.TBOtherData)
+        Me.Controls.Add(Me.QTPlayer)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TVData)
         Me.Controls.Add(Me.LVDataOther)
         Me.Controls.Add(Me.LProject)
@@ -120,7 +146,7 @@ Partial Class Projectpage
         Me.Name = "Projectpage"
         Me.Text = "Projectpage"
         CType(Me.Database1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Player, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.QTPlayer, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -135,5 +161,8 @@ Partial Class Projectpage
     Friend WithEvents check_for_data As Timer
     Friend WithEvents check_for_dataother As Timer
     Friend WithEvents TVData As TreeView
-    Friend WithEvents Player As AxWMPLib.AxWindowsMediaPlayer
+    Friend WithEvents Label2 As Label
+    Friend WithEvents QTPlayer As AxQTOControlLib.AxQTControl
+    Friend WithEvents TBOtherData As TextBox
+    Friend WithEvents Size As ColumnHeader
 End Class
